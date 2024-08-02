@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy the requirements file and application directory to the container
 COPY requirements.txt /app
-COPY devops /app
+COPY devops /app/devops
 
 # Update and install Python and pip, and create a virtual environment
 RUN apt-get update && \
@@ -15,10 +15,9 @@ RUN apt-get update && \
     . venv/bin/activate && \
     pip install --upgrade pip && \
     pip install -r requirements.txt && \
-    cd devops
-
-ENTRYPOINT ["python3"]
-CMD ["sh", "-c", ". venv/bin/activate && manage.py", "runserver", "0.0.0.0:8000"]
+    
+    # Set the entry point or command to run your application
+CMD ["sh", "-c", ". venv/bin/activate && python3 devops/manage.py", "0.0.0.0:8000"]
 
 
 

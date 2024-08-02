@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt /app
 COPY devops /app
 
-ENV PIP_BREAK_SYSTEM_PACKAGES 1
+#ENV PIP_BREAK_SYSTEM_PACKAGES 1
 
 # Old command provided by Abhishek
 #RUN apt-get update && \

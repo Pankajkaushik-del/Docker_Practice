@@ -19,7 +19,7 @@ RUN apt-get update && \
 FROM gcr.io/distroless/python3
 
 # Copy the compiled binary from the build stage
-COPY --from=build /app /app
+COPY --from=build /devops /app
 
 ENTRYPOINT ["/app"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]

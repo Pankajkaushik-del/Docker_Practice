@@ -1,5 +1,5 @@
 #BASE IMAGE
-FROM ubuntu AS BUILD
+FROM ubuntu AS build
 
 WORKDIR /app
 

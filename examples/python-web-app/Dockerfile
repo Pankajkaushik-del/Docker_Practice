@@ -1,3 +1,4 @@
+#UPDATED WITH CHATGPT AS COMPARED TO ABHISHEKS FILE
 # First stage: build stage
 FROM ubuntu AS build
 

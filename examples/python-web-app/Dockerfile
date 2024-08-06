@@ -1,4 +1,5 @@
-FROM ubuntu
+#BASE IMAGE
+FROM ubuntu AS BUILD
 
 WORKDIR /app
 
@@ -12,5 +13,13 @@ RUN apt-get update && \
     pip install -r requirements.txt && \
     cd devops
 
-ENTRYPOINT ["python3"]
+    ############################################
+# HERE STARTS THE MAGIC OF MULTI STAGE BUILD
+############################################
+FROM gcr.io/distroless/python3
+
+# Copy the compiled binary from the build stage
+COPY --from=build /app /app
+
+ENTRYPOINT ["/app"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
